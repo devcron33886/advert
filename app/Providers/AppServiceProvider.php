@@ -26,3 +26,4 @@ class AppServiceProvider extends ServiceProvider
         View::share('settings', Setting::first());
     }
 }
+

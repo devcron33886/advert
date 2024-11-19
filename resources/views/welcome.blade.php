@@ -58,16 +58,17 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="py-6 px-2 w-full max-w-screen-xl mx-auto">
                 <div class="overflow-hidden rounded-md border border-blue-500 bg-blue-500 p-1">
-                    <ul class="flex items-center gap-2 text-sm font-medium">
+                    <ul class="flex flex-wrap items-center gap-2 text-sm font-medium md:flex-nowrap">
                         @foreach ($categories as $category)
-                            <li class="py-1 px-1">
+                            <li class="py-1 px-1 w-full sm:w-auto">
                                 <a href="{{ route('category.show', $category->slug) }}"
-                                    class="inline-flex text-blue-400 bg-gray-100 cursor-pointer items-center gap-2 rounded-lg px-3 py-2 hover:bg-white hover:text-black hover:shadow"
-                                    wire:navigate>
+                                   class="inline-flex w-full sm:w-auto text-blue-400 bg-gray-100 cursor-pointer items-center gap-2 rounded-lg px-3 py-2 hover:bg-white hover:text-black hover:shadow"
+                                   wire:navigate>
                                     {{ $category->name }} <span
-                                        class="rounded-full bg-green-300 px-2 py-0.5 text-xs font-semibold ">
-                                        {{ $category->adverts->count() }}
-                                    </span></a>
+                                        class="rounded-full bg-green-300 px-2 py-0.5 text-xs font-semibold ml-2">
+                        {{ $category->adverts->count() }}
+                    </span>
+                                </a>
                             </li>
                         @endforeach
                     </ul>
@@ -76,9 +77,9 @@
                     <div class="mt-4 sm:px-4">
                         <a href="{{ route('adverts.show', $advert->slug) }}" target="__blank" class="flex items-center bg-white p-4 rounded-lg shadow-none border border-blue-500">
                             <div class="mr-4">
-                               
+
                                 <img src="/storage/{{ $advert->institution->logo }}" alt="{{ $advert->institution->name}}" class="w-full h-20 object-cover">
-                                
+
                             </div>
                             <div>
                                 <h5 class="mb-2 text-md font-semibold tracking-tight text-gray-900 dark:text-white">
@@ -87,7 +88,7 @@
                                         {{ $advert->institution->name ?? '-' }}| Location: {{ $advert->location ?? '-' }}|
                                         Published on: {{ $advert->formatted_date ?? '-' }}| Deadline:
                                             {{ $advert->formatted_deadline ?? '-' }}| Experience:
-                                            {{ $advert->desired_experience ?? 'Not specified' }}  
+                                            {{ $advert->desired_experience ?? 'Not specified' }}
                                 </blockquote>
                                 <div class="mt-2 text-gray-600">
                                     <span
